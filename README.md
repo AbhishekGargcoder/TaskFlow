@@ -98,19 +98,15 @@ src/
 └── main.tsx         # Entry point
 ```
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 - **Author**: [Abhishek Garg] ([https://github.com/AbhishekGargcoder])
-- **Project URL**: [https://github.com/imcoder22/todo-app](https://github.com/imcoder22/TaskFlow)
-- **Project Live Demo**: [live demo](https://todo-app.imcoder22.repl.co/)
+- **Project URL**: [https://github.com/imcoder22/todo-app](https://github.com/AbhishekGargcoder/TaskFlow)
+- **Project Live Demo**: [Live demo](https://task-flow-git-main-imcoder22-1902s-projects.vercel.app/)
 
 ## Acknowledgments
 
-- [TaskFlow Backend](https://github.com/imcoder22/todo-app)
+- [TaskFlow Backend](https://todo-app.imcoder22.workers.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Lucide React](https://lucide.dev/)
 - [Axios](https://github.com/axios/axios)
@@ -124,7 +120,7 @@ Contributions are welcome! Please open an issue or submit a pull request.
 👤 **Abhishek Garg**
 
 - Github: [@AbhishekGargcoder](https://github.com/AbhishekGargcoder)
-- LinkedIn: [Abhishek Garg](https://www.linkedin.com/in/abhishek-garg-b6a1b61a0/)
+- LinkedIn: [Abhishek Garg](https://www.linkedin.com/in/abhishek-garg-625b7a23b/)
 
 ## Show your support
 
