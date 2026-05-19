@@ -1,5 +1,3 @@
-create a good readme file for me here fast:
-
 # TaskFlow - A Premium Todo Application
 
 TaskFlow is a modern, premium todo application built with React, TypeScript, and Vite, featuring a beautiful UI, JWT authentication, and a robust backend API. Organize your tasks with style and efficiency.
@@ -107,4 +105,27 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 - **Author**: [Abhishek Garg] ([https://github.com/AbhishekGargcoder])
-- **Project URL**: [https://github.com/imcoder22/todo-app](https://github.com/imcoder22/todo-app)
+- **Project URL**: [https://github.com/imcoder22/todo-app](https://github.com/imcoder22/TaskFlow)
+- **Project Live Demo**: [live demo](https://todo-app.imcoder22.repl.co/)
+
+## Acknowledgments
+
+- [TaskFlow Backend](https://github.com/imcoder22/todo-app)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Lucide React](https://lucide.dev/)
+- [Axios](https://github.com/axios/axios)
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## Author
+
+👤 **Abhishek Garg**
+
+- Github: [@AbhishekGargcoder](https://github.com/AbhishekGargcoder)
+- LinkedIn: [Abhishek Garg](https://www.linkedin.com/in/abhishek-garg-b6a1b61a0/)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
