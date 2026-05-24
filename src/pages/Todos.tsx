@@ -22,7 +22,16 @@ import { BACKENED_URL } from '../../config';
 import StatsComponent from '../components/StatsComponent';
 import TodoCard from '../components/TodoCard';
 import type { Todo } from '../types'
+// decode token to get user name
+import { jwtDecode } from "jwt-decode"
 
+
+interface DecodedToken {
+    id: string;
+    email: string;
+    name?: string;
+    exp: number;
+}
 
 export default function Todos() {
     const navigate = useNavigate();
@@ -79,6 +88,7 @@ export default function Todos() {
                     Authorization: `Bearer ${token}`
                 }
             });
+            console.log("TODOS AFTER FETCH :", response.data);
             if (response.data && Array.isArray(response.data.todos)) {
                 setTodos(response.data.todos);
             } else {
@@ -102,8 +112,24 @@ export default function Todos() {
 
     // Get active username from fetched todos (database relation)
     const userName = useMemo(() => {
-        const found = todos.find(t => t.user?.name);
-        return found?.user?.name || 'Productive User';
+        const currentTime = Date.now() / 1000;
+
+        try {
+            const decoded = jwtDecode<DecodedToken>(localStorage.getItem('token') as string);
+            if (decoded.exp < currentTime) {
+                console.log("Token expired");
+                localStorage.removeItem("token");
+            } else {
+                console.log("decoded token", decoded);
+                return decoded.name || "Productive User";
+            }
+        } catch (error) {
+            console.error("Error decoding token:", error);
+            localStorage.removeItem("token");
+            return "Productive User";
+        }
+
+
     }, [todos]);
 
     // Create new Todo

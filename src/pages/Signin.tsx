@@ -7,24 +7,19 @@ import { BACKENED_URL } from '../../config';
 export default function Signin() {
   const navigate = useNavigate();
 
-  // Form states
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // UI states
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
-
-  // Validation touch states
   const [isEmailTouched, setIsEmailTouched] = useState(false);
   const [isPasswordTouched, setIsPasswordTouched] = useState(false);
 
-  // Email validation and password validation
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isPasswordValid = password.length >= 6;
 
-  // Clear toast automatically after 4 seconds
+  // Clear toast automatically after 4 seconds jisse user friendly lage
   useEffect(() => {
     if (toast) {
       const timer = setTimeout(() => {

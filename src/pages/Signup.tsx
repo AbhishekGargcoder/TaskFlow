@@ -7,26 +7,20 @@ import { BACKENED_URL } from '../../config';
 export default function Signup() {
     const navigate = useNavigate();
 
-    // Form states
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-
-    // UI states
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [toast, setToast] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
-    // Validation touch states
     const [isEmailTouched, setIsEmailTouched] = useState(false);
     const [isPasswordTouched, setIsPasswordTouched] = useState(false);
 
-    // Email regex
-    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const isEmailValid = " ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$";
     const isPasswordValid = password.length >= 6;
 
-    // Clear toast after 4 seconds
+    // Clear toast after 4 seconds jisse user friendly lage
     useEffect(() => {
         if (toast) {
             const timer = setTimeout(() => {
@@ -73,7 +67,7 @@ export default function Signup() {
                 setTimeout(() => {
                     navigate('/todos');
                 }, 1500);
-            } else {
+            } else {  // now token is not received at the time of register, we get verfication email embedded token inside.
                 setToast({
                     type: 'error',
                     message: data.msg || 'Signup failed. Please try again.'
