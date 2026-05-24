@@ -614,7 +614,7 @@ export default function Todos() {
                     </div>
                 )}
 
-                {/* EMPTY STATE */}
+                {/* EMPTY STATE : jab user ne search nhi kiya */}
                 {!isLoading && !error && processedTodos.length === 0 && (
                     <div className="flex flex-col items-center justify-center py-16 px-4 bg-white/70 border border-white/60 rounded-2xl shadow-sm text-center">
                         <div className="w-16 h-16 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center border border-rose-100 shadow-sm mb-4">

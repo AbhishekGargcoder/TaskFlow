@@ -221,6 +221,12 @@ export default function Signin() {
                 </button>
               </div>
             </div>
+            {/* forget password */}
+            <div className="text-right">
+              <Link to="/forgot-password" className="text-sm text-rose-600 hover:text-rose-500 transition duration-200 underline decoration-rose-500/20 hover:decoration-rose-500 decoration-2 underline-offset-4">
+                Forgot Password?
+              </Link>
+            </div>
 
             {/* Submit Button */}
             <button

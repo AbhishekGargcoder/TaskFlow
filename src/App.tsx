@@ -5,7 +5,8 @@ import Signin from './pages/Signin';
 import Todo from './pages/Todo';
 import Todos from './pages/Todos';
 import VerifyEmail from './pages/VerifyEmail';
-
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 function App() {
   return (
     <>
@@ -17,6 +18,8 @@ function App() {
           <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/todos" element={<Todos />} />
           <Route path="/todos/:id" element={<Todo />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path='/reset-password' element={<ResetPassword />}></Route>
         </Routes>
       </BrowserRouter>
     </>
