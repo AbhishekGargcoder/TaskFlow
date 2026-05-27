@@ -303,9 +303,9 @@ export default function Todos() {
         // 3. Sorting
         list.sort((a, b) => {
             if (sortBy === 'newest') {
-                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+                return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
             } else if (sortBy === 'oldest') {
-                return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+                return new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime();
             } else { // alphabetical
                 return a.title.localeCompare(b.title);
             }
