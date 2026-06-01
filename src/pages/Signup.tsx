@@ -65,6 +65,7 @@ export default function Signup() {
 
                 // wait for success state aur fir navigate karenge.
                 setTimeout(() => {
+                    
                     navigate('/todos');
                 }, 1500);
             } else {  // now token is not received at the time of register, we get verfication email embedded token inside.

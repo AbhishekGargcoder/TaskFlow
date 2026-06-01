@@ -145,8 +145,11 @@ export default function Todos() {
             navigate('/signin');
             return;
         }
-
         setIsSubmitting(true);
+
+        // html ignore line breaks by default. so, maually add <br/> after each line then send to BE.
+    
+
         try {
             const response = await axios.post(
                 `${BACKENED_URL}/api/v1/todo`,
@@ -482,11 +485,11 @@ export default function Todos() {
                                     <label htmlFor="task-desc" className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
                                         Task Description
                                     </label>
-                                    <input
+                                    <textarea
                                         id="task-desc"
-                                        type="text"
                                         required
                                         placeholder="e.g. Go to Gym"
+                                        rows={2}
                                         value={newDescription}
                                         onChange={(e) => setNewDescription(e.target.value)}
                                         className="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 text-sm focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10 transition duration-200 shadow-2xs"
