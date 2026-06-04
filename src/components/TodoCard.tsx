@@ -157,13 +157,13 @@ export default function TodoCard({ todo, handleDeleteTodo, handleToggleDone, isE
                     </button>
                     {/* Delete button for confirmation */}
                     
-                    <button
+                    {/* <button
                         onClick={() => navigate(`/todos/${todo.id}`)}
                         className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition duration-150 cursor-pointer"
                         title="Delete Task"
                     >
                         <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+                    </button> */}
                 </div>
 
             </div>
