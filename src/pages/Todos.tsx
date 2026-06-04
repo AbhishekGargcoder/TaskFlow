@@ -387,7 +387,7 @@ export default function Todos() {
                         <div className="hidden sm:flex items-center gap-3 pr-2 border-r border-slate-200">
                             <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center border border-rose-200">
                                 <span className="text-xs font-bold text-rose-700 uppercase">
-                                    {userName.substring(0, 2)}
+                                    {userName?.substring(0, 2)}
                                 </span>
                             </div>
                             <span className="text-sm font-semibold text-slate-700">

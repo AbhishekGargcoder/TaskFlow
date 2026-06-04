@@ -1,6 +1,7 @@
-import { Trash2, Check, ChevronDown, ChevronUp, ExternalLink, Calendar } from 'lucide-react'
+import { Trash2, Check, ChevronDown, ChevronUp, ExternalLink, Calendar,Copy} from 'lucide-react'
 import type { Todo } from '../types';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
+import { useState } from 'react';
 
 interface TodoCardProps {
     todo: Todo;
@@ -12,6 +13,20 @@ interface TodoCardProps {
 
 export default function TodoCard({ todo, handleDeleteTodo, handleToggleDone, isExpanded, toggleExpand }: TodoCardProps) {
     const hasLongDescription = todo.description.length > 95;
+    const navigate = useNavigate();
+
+    let [copied,setCopied] = useState(false);
+
+  async function handlecopiedText() {
+        const text = todo.description;
+
+        await navigator.clipboard.writeText(text); // async operation
+        setCopied(true); // set copied to true immediately after copying
+        setTimeout(() => {
+            setCopied(false);
+        }, 2000);
+    }
+
     return (
         <div
             key={todo.id}
@@ -117,9 +132,33 @@ export default function TodoCard({ todo, handleDeleteTodo, handleToggleDone, isE
                         <ExternalLink className="w-3.5 h-3.5" />
                     </Link>
 
+                        {/* copu btn */}
+                        <button 
+                        onClick = {handlecopiedText}
+                        className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition duration-150 cursor-pointer"
+                        title="copied Task"> 
+                        {
+                            copied ? <Check className="w-3.5 h-3.5"/> : <Copy className="w-3.5 h-3.5"/>
+                        }
+                        
+
+                        </button>
+
+
+
+
                     {/* Delete button */}
                     <button
                         onClick={() => handleDeleteTodo(todo.id)}
+                        className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition duration-150 cursor-pointer"
+                        title="Delete Task"
+                    >
+                        <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                    {/* Delete button for confirmation */}
+                    
+                    <button
+                        onClick={() => navigate(`/todos/${todo.id}`)}
                         className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition duration-150 cursor-pointer"
                         title="Delete Task"
                     >
