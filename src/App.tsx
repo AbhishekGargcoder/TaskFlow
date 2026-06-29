@@ -7,13 +7,15 @@ import Todos from './pages/Todos';
 import VerifyEmail from './pages/VerifyEmail';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import ConfirmDeleteDialog from './components/ConfirmDeleteDialog';
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           {/* <Route path="/" element={<Navigate to="/signup" replace />} /> */}
-          <Route path="/" element={<Todos />} />
+          {/* <Route path="/" element={<Todos />} /> */}
+          <Route path="/" element={<ConfirmDeleteDialog isOpen={true} title="Delete Todo" message="Are you sure you want to delete this todo?" onConfirm={()=>{console.log("confirm")}} onCancel={()=>{console.log("cancel")}} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/verify-email" element={<VerifyEmail />} />

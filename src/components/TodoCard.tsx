@@ -1,8 +1,8 @@
-import { Trash2, Check, ChevronDown, ChevronUp, ExternalLink, Calendar,Copy} from 'lucide-react'
+import { Trash2, Check, ChevronDown, ChevronUp, ExternalLink, Calendar, Copy } from 'lucide-react'
 import type { Todo } from '../types';
-import { Link ,useNavigate} from 'react-router-dom';
-import { useState } from 'react';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useCallback, useState } from 'react';
+import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 interface TodoCardProps {
     todo: Todo;
     handleDeleteTodo: (id: string) => void;
@@ -13,11 +13,12 @@ interface TodoCardProps {
 
 export default function TodoCard({ todo, handleDeleteTodo, handleToggleDone, isExpanded, toggleExpand }: TodoCardProps) {
     const hasLongDescription = todo.description.length > 95;
+    const [deleteDialog, setDeleteDialog] = useState(false);
     const navigate = useNavigate();
 
-    let [copied,setCopied] = useState(false);
+    let [copied, setCopied] = useState(false);
 
-  async function handlecopiedText() {
+    async function handlecopiedText() {
         const text = todo.description;
 
         await navigator.clipboard.writeText(text); // async operation
@@ -26,6 +27,15 @@ export default function TodoCard({ todo, handleDeleteTodo, handleToggleDone, isE
             setCopied(false);
         }, 2000);
     }
+
+    const handleCancelDelete = useCallback(() => {
+        setDeleteDialog(false);
+    }, [])
+
+    const handleConfirmDelete = useCallback(() => {
+        handleDeleteTodo(todo.id);
+        setDeleteDialog(false);
+    }, [handleDeleteTodo]);
 
     return (
         <div
@@ -121,7 +131,7 @@ export default function TodoCard({ todo, handleDeleteTodo, handleToggleDone, isE
                 </div>
 
                 {/* Actions Panel */}
-                <div className="flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-1">
 
                     {/* Navigate to detail page */}
                     <Link
@@ -132,38 +142,38 @@ export default function TodoCard({ todo, handleDeleteTodo, handleToggleDone, isE
                         <ExternalLink className="w-3.5 h-3.5" />
                     </Link>
 
-                        {/* copu btn */}
-                        <button 
-                        onClick = {handlecopiedText}
+                    {/* copu btn */}
+                    <button
+                        onClick={handlecopiedText}
                         className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition duration-150 cursor-pointer"
-                        title="copied Task"> 
+                        title="copied Task">
                         {
-                            copied ? <Check className="w-3.5 h-3.5"/> : <Copy className="w-3.5 h-3.5"/>
+                            copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />
                         }
-                        
 
-                        </button>
+
+                    </button>
 
 
 
 
                     {/* Delete button */}
                     <button
-                        onClick={() => handleDeleteTodo(todo.id)}
+                        onClick={() => setDeleteDialog(prev => !prev)}
                         className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition duration-150 cursor-pointer"
                         title="Delete Task"
                     >
                         <Trash2 className="w-3.5 h-3.5" />
                     </button>
                     {/* Delete button for confirmation */}
-                    
-                    {/* <button
-                        onClick={() => navigate(`/todos/${todo.id}`)}
-                        className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition duration-150 cursor-pointer"
-                        title="Delete Task"
-                    >
-                        <Trash2 className="w-3.5 h-3.5" />
-                    </button> */}
+                    {/* <ConfirmDeleteDialog
+            isOpen={isDeleteDialogOpen}
+            title="Delete Todo"
+            message="Are you sure you want to delete this todo?"
+            onConfirm={handleConfirmDelete}
+            onCancel={() => setIsDeleteDialogOpen(false)}
+          /> */}
+                    <ConfirmDeleteDialog isOpen={deleteDialog} title="Delete Todo" message="Are you sure you want to delete this todo?" onConfirm={handleConfirmDelete} onCancel={handleCancelDelete} />
                 </div>
 
             </div>
